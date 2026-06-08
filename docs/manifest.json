@@ -9,9 +9,9 @@
   "action": {
     "title": "dice-for-year-zero-engine",
     "icon": "yze",
-    "popover": "./popover.html",
+    "popover": "popover.html",
     "height": 700,
     "width": 375
   },
-  "background_url": "./background.html"
+  "background_url": "background.html"
 }

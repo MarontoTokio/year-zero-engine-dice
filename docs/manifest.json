@@ -1,15 +1,15 @@
 {
   "name": "DS Dice for OBR",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "manifest_version": 1,
   "author": "Cort-of-KEO",
   "homepage_url": "https://github.com/cort-of-keo/obr-DS-dice-main",
-  "icon": "https://MarontoTokio.github.io/year-zero-engine-dice/yze-icon.svg",
+  "icon": "https://MarontoTokio.github.io/year-zero-engine-dice/logo.png",
   "description": "Unofficial Dice roller for Draw Steel",
   "action": {
     "title": "DS Dice for OBR",
     "icon": "https://MarontoTokio.github.io/year-zero-engine-dice/d10-svgrepo-com.svg",
-    "popover": "https://MarontoTokio.github.io/year-zero-engine-dice/",
+    "popover": "https://MarontoTokio.github.io/year-zero-engine-dice/index.html",
     "height": 700,
     "width": 375
   },

@@ -9,7 +9,7 @@
   "action": {
     "title": "dice-for-year-zero-engine",
     "icon": "yze",
-    "popover": "popover.html",
+    "popover": "https://MarontoTokio.github.io/year-zero-engine-dice/",
     "height": 700,
     "width": 375
   },

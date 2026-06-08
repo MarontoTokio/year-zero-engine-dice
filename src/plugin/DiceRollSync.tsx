@@ -6,47 +6,29 @@ import { getPluginId } from "./getPluginId";
 
 /** Sync the current dice roll to the plugin */
 export function DiceRollSync() {
-  const prevIds = useRef<string[]>([]);
   useEffect(
     () =>
       useDiceRollStore.subscribe((state) => {
-        let changed = false;
-        if (!state.roll) {
-          changed = true;
-          prevIds.current = [];
-        } else {
-          const ids = getDieFromDice(state.roll).map((die) => die.id);
-          // Check array length for early change check
-          if (prevIds.current.length !== ids.length) {
-            changed = true;
-          }
-          // Check the ids have changed
-          else if (!ids.every((id, index) => id === prevIds.current[index])) {
-            changed = true;
-          }
-          // Check if we'e completed a roll
-          else if (
-            Object.values(state.rollValues).every((value) => value !== null)
-          ) {
-            changed = true;
-          }
-          prevIds.current = ids;
-        }
+        const metadata: Record<string, unknown> = {
+          [getPluginId("roll")]: state.roll,
+          [getPluginId("rollThrows")]: state.roll
+            ? state.roll.hidden
+              ? null
+              : state.rollThrows
+            : null,
+          [getPluginId("rollValues")]: state.roll
+            ? state.roll.hidden
+              ? null
+              : state.rollValues
+            : null,
+          [getPluginId("rollTransforms")]: state.roll
+            ? state.roll.hidden
+              ? null
+              : state.rollTransforms
+            : null,
+        };
 
-        if (changed) {
-          // Hide values if needed
-          const throws = state.roll?.hidden ? undefined : state.rollThrows;
-          const values = state.roll?.hidden ? undefined : state.rollValues;
-          const transforms = state.roll?.hidden
-            ? undefined
-            : state.rollTransforms;
-          OBR.player.setMetadata({
-            [getPluginId("roll")]: state.roll,
-            [getPluginId("rollThrows")]: throws,
-            [getPluginId("rollValues")]: values,
-            [getPluginId("rollTransforms")]: transforms,
-          });
-        }
+        OBR.player.setMetadata(metadata);
       }),
     []
   );

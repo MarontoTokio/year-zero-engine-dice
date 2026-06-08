@@ -33,13 +33,16 @@ export function usePlayerDice(player?: Player) {
     if (!rollTransforms) {
       return undefined;
     }
+
     const values: Record<string, DiceTransform> = {};
     for (const [id, value] of Object.entries(rollTransforms)) {
-      if (value !== null) {
-        values[id] = value;
+      if (value === null) {
+        return undefined;
       }
+      values[id] = value;
     }
-    return values;
+
+    return Object.keys(values).length > 0 ? values : undefined;
   }, [rollTransforms]);
 
   const transformsRef = useRef<Record<string, DiceTransform | null> | null>(
@@ -53,13 +56,16 @@ export function usePlayerDice(player?: Player) {
     if (!rollValues) {
       return undefined;
     }
+
     const values: Record<string, number> = {};
     for (const [id, value] of Object.entries(rollValues)) {
-      if (value !== null) {
-        values[id] = value;
+      if (value === null) {
+        return undefined;
       }
+      values[id] = value;
     }
-    return values;
+
+    return Object.keys(values).length > 0 ? values : undefined;
   }, [rollValues]);
 
   const finalValue = useMemo(() => {

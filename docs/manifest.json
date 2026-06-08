@@ -9,7 +9,7 @@
   "action": {
     "title": "DS Dice for OBR",
     "icon": "https://MarontoTokio.github.io/year-zero-engine-dice/d10-svgrepo-com.svg",
-    "popover": "https://MarontoTokio.github.io/year-zero-engine-dice/index.html",
+    "popover": "https://MarontoTokio.github.io/year-zero-engine-dice/popover.html",
     "height": 700,
     "width": 375
   },

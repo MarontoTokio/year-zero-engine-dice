@@ -7,10 +7,12 @@ declare var __dirname: string;
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: "./",
+  base: "/year-zero-engine-dice/",
   plugins: [react()],
   assetsInclude: ["**/*.glb", "**/*.hdr"],
   build: {
+    outDir: "docs",
+    emptyOutDir: true,
     rollupOptions: {
       input: {
         main: resolve(__dirname, "index.html"),
